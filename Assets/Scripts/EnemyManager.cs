@@ -1,0 +1,26 @@
+using UnityEngine;
+
+public class EnemyManager : MonoBehaviour
+{
+    public Transform target;
+    private float speed = 5f;//移動速度
+    private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    private float chaseDistance = 20f;//追跡開始距離
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.speed = speed;
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        if (distanceToTarget <= chaseDistance)
+        {
+            navMeshAgent.SetDestination(target.position);
+        }
+    }
+}
