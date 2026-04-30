@@ -1,11 +1,14 @@
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrayerController : MonoBehaviour
 {
     private Rigidbody rigidBody;
     private Animator animator;
     private float speed = 30f;//移動速度
+    [SerializeField] TextMeshProUGUI hpText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
