@@ -50,9 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/EnemyManager.cs" />
+    <Compile Include="Assets/Scripts/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/PlayerStatusSO.cs" />
     <Compile Include="Assets/Resources/Mountain Terrain rocks and tree/Script/Camera/FlyCameraControl.cs" />
     <Compile Include="Assets/Resources/Mountain Terrain rocks and tree/Script/Camera/CameraControl.cs" />
-    <Compile Include="Assets/Scripts/PrayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
