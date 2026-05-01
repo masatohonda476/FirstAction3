@@ -1,21 +1,31 @@
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PrayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody rigidBody;
     private Animator animator;
     private float speed = 30f;//移動速度
+
+    [SerializeField] PlayerStatusSO playerStatusSO;
+    [SerializeField] TextMeshProUGUI hpText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + playerStatusSO.HP.ToString();
+        Debug.Log(playerStatusSO.HP);
     }
 
     // Update is called once per frame
     void Update()
     {
+        hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + playerStatusSO.HP.ToString();
+
         //キャラクター移動処理S
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -56,5 +66,10 @@ public class PrayerController : MonoBehaviour
         }
 
         //キャラクター移動処理E
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        playerStatusSO.HP = playerStatusSO.HP - 10;
     }
 }
