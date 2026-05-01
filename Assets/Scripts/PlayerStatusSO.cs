@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-[CreateAssetMenu(fileName = "Player", menuName = "Scriptable Objects/Player")]
-public class Player : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerStatusSO", menuName = "Scriptable Objects/PlayerStatusSO")]
+public class PlayerStatusSO : ScriptableObject
 {
-    
+    [SerializeField] int hP;
+    [SerializeField] int mP;
+    [SerializeField] int attack;
+    [SerializeField] int defense;
+
+    public int HP { get => hP; set => hP = value; }
 }

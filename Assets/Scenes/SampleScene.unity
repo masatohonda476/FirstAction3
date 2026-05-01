@@ -1854,6 +1854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f117d1ce7d3294ca69fa3a3e12e1369d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrayerController
+  playerStatusSO: {fileID: 11400000, guid: b52edc6d46ab14a909409fb94ae7cc1b, type: 2}
   hpText: {fileID: 740520584}
 --- !u!4 &1198313954 stripped
 Transform:
