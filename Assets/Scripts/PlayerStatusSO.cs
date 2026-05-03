@@ -9,5 +9,5 @@ public class PlayerStatusSO : ScriptableObject
     [SerializeField] int attack;
     [SerializeField] int defense;
 
-    public int HP { get => hP; set => hP = value; }
+    public int HP { get => hP; }
 }

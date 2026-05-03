@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] EnemyStatusSO enemyStatusSO;
     public Transform target;
     private float speed = 5f;//移動速度
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
@@ -13,6 +14,7 @@ public class EnemyManager : MonoBehaviour
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.speed = speed;
         animator = GetComponent<Animator>();
+        Debug.Log(enemyStatusSO.enemyStatusList[0].HP);
     }
 
     // Update is called once per frame

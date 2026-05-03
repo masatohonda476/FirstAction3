@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c599dbf3720e42b6ae0b8903e90f088, type: 3}
   m_Name: Player1
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusSO
-  hP: 100
+  hP: 200
   mP: 50
   attack: 10
   defense: 10
