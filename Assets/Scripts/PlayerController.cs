@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + currentHP.ToString();
 
-        //キャラクター移動処理S
+        //キャラクター移動処理
         if (Input.GetKey(KeyCode.UpArrow))//前
         {
             rigidBody.AddForce(transform.forward * speed, ForceMode.Acceleration);
@@ -49,7 +49,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("MoveLFT", true);
         }
 
-        if (Input.GetMouseButtonDown(0))//攻撃
+        //攻撃
+        if (Input.GetMouseButtonDown(0))
         {
             animator.SetBool("Attack", true);
         }

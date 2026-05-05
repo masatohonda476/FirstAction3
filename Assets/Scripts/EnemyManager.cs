@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private float chaseDistance = 10f;//追跡開始距離
     private Animator animator;
+    private int currentHP;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,4 +31,14 @@ public class EnemyManager : MonoBehaviour
             animator.SetBool("Found", false);
         }
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Weapon")
+        {
+        Debug.Log("Enemy hit!");
+        }
+        
+    }
 }
+
