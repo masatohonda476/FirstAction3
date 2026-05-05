@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private float speed = 30f;//移動速度
     private int currentHP;
+    private int damage;
+    [SerializeField] EnemyStatusSO EnemyStatusSO;
 
     [SerializeField] PlayerStatusSO playerStatusSO;
     [SerializeField] TextMeshProUGUI hpText;
@@ -27,28 +29,36 @@ public class PlayerController : MonoBehaviour
     {
         hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + currentHP.ToString();
 
-        //キャラクター移動処理S
-        if (Input.GetKey(KeyCode.UpArrow))
+        //キャラクター移動処理
+        if (Input.GetKey(KeyCode.UpArrow))//前
         {
             rigidBody.AddForce(transform.forward * speed, ForceMode.Acceleration);
             animator.SetBool("MoveFWD", true);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))//後
         {
             rigidBody.AddForce(transform.forward * speed * -1, ForceMode.Acceleration); 
             animator.SetBool("MoveBWD", true);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))//右
         {
             rigidBody.AddForce(transform.right * speed, ForceMode.Acceleration);        
             animator.SetBool("MoveRGT", true);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))//左
         {
             rigidBody.AddForce(transform.right * speed * -1, ForceMode.Acceleration);        
             animator.SetBool("MoveLFT", true);
-        }         
+        }
 
+        //攻撃
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("Attack", true);
+        }
+
+                 
+    //キーを離したときの処理
        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             animator.SetBool("MoveFWD", false);
@@ -66,11 +76,34 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("MoveLFT", false);
         }
 
-        //キャラクター移動処理E
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("Attack", false);
+        }
+
+        //死亡判定
+        if (currentHP <= 0)
+        {            
+            Destroy(this.gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision col)
     {
         currentHP = currentHP - 10;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            Debug.Log("被弾");
+            damage = (int)(EnemyStatusSO.enemyStatusList[0].ATTACK / 2 - playerStatusSO.DEFENSE / 4);
+            if (damage > 0)
+            {
+               currentHP = currentHP - damage;
+            }
+        }
+        
     }
 }

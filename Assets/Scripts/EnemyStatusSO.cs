@@ -28,6 +28,9 @@ public class EnemyStatusSO : ScriptableObject
         // }
 
         public int HP { get => hP; }
+        public int MP { get => mP; }
+        public int ATTACK { get => attack; }
+        public int DEFENSE { get => defense; }
     }
 
     
