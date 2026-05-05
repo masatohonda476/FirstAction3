@@ -28,27 +28,34 @@ public class PlayerController : MonoBehaviour
         hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + currentHP.ToString();
 
         //キャラクター移動処理S
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))//前
         {
             rigidBody.AddForce(transform.forward * speed, ForceMode.Acceleration);
             animator.SetBool("MoveFWD", true);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))//後
         {
             rigidBody.AddForce(transform.forward * speed * -1, ForceMode.Acceleration); 
             animator.SetBool("MoveBWD", true);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow))//右
         {
             rigidBody.AddForce(transform.right * speed, ForceMode.Acceleration);        
             animator.SetBool("MoveRGT", true);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))//左
         {
             rigidBody.AddForce(transform.right * speed * -1, ForceMode.Acceleration);        
             animator.SetBool("MoveLFT", true);
-        }         
+        }
 
+        if (Input.GetMouseButtonDown(0))//攻撃
+        {
+            animator.SetBool("Attack", true);
+        }
+
+                 
+    //キーを離したときの処理
        if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             animator.SetBool("MoveFWD", false);
@@ -64,6 +71,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             animator.SetBool("MoveLFT", false);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("Attack", false);
         }
 
         //キャラクター移動処理E
