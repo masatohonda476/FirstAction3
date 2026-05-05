@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private float speed = 30f;//移動速度
     private int currentHP;
+    private int damage;
+    [SerializeField] EnemyStatusSO EnemyStatusSO;
 
     [SerializeField] PlayerStatusSO playerStatusSO;
     [SerializeField] TextMeshProUGUI hpText;
@@ -79,11 +81,29 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Attack", false);
         }
 
-        //キャラクター移動処理E
+        //死亡判定
+        if (currentHP <= 0)
+        {            
+            Destroy(this.gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision col)
     {
         currentHP = currentHP - 10;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            Debug.Log("被弾");
+            damage = (int)(EnemyStatusSO.enemyStatusList[0].ATTACK / 2 - playerStatusSO.DEFENSE / 4);
+            if (damage > 0)
+            {
+               currentHP = currentHP - damage;
+            }
+        }
+        
     }
 }

@@ -1086,6 +1086,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931298151966786, guid: 928a1377c1cd4515b208fef3a396b8ea, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -1266,6 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemyStatusSO: {fileID: 11400000, guid: 70feebffd5d6b404a858a6d692723d3b, type: 2}
+  PlayerStatusSO: {fileID: 11400000, guid: b52edc6d46ab14a909409fb94ae7cc1b, type: 2}
   target: {fileID: 1198313954}
 --- !u!195 &629993582
 NavMeshAgent:
@@ -1855,6 +1860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f117d1ce7d3294ca69fa3a3e12e1369d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrayerController
+  EnemyStatusSO: {fileID: 11400000, guid: 70feebffd5d6b404a858a6d692723d3b, type: 2}
   playerStatusSO: {fileID: 11400000, guid: b52edc6d46ab14a909409fb94ae7cc1b, type: 2}
   hpText: {fileID: 740520584}
 --- !u!4 &1198313954 stripped

@@ -16,8 +16,8 @@ MonoBehaviour:
   - enemyName: slime
     hP: 56
     mP: 41
-    attack: 26
-    defense: 31
+    attack: 10
+    defense: 10
   - enemyName: 
     hP: 0
     mP: 0
