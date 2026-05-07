@@ -88,11 +88,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
-    {
-        currentHP = currentHP - 10;
-    }
-
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Enemy")
