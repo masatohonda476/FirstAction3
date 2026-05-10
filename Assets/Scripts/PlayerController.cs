@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +10,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidBody;
     private Animator animator;
     private float speed = 30f;//移動速度
-    private int currentHP;
+    public int currentHP;
     private int damage;
+    private bool statusWindowFrag = false;
     [SerializeField] EnemyStatusSO EnemyStatusSO;
 
     [SerializeField] PlayerStatusSO playerStatusSO;
     [SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] GameObject statusWindow;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +26,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + currentHP.ToString();
         currentHP = playerStatusSO.HP;
+        statusWindow.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,11 +57,29 @@ public class PlayerController : MonoBehaviour
         }
 
         //攻撃
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("Attack", true);
         }
 
+        //ステータス画面
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            switch (statusWindowFrag)
+            {
+                case false:
+                    GameObject.Find("StatusWindowManager").GetComponent<StatusWindowManager>().StatusOpen();
+                    statusWindow.SetActive(true);
+                    Time.timeScale = 0;
+                    statusWindowFrag = true;
+                    break;
+                case true:
+                    statusWindow.SetActive(false);
+                    Time.timeScale = 1;
+                    statusWindowFrag = false;
+                    break;
+            }
+        }
                  
     //キーを離したときの処理
        if (Input.GetKeyUp(KeyCode.UpArrow))
@@ -75,8 +98,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("MoveLFT", false);
         }
-
-        if (Input.GetMouseButtonUp(0))
+        //攻撃
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             animator.SetBool("Attack", false);
         }
