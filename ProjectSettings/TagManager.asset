@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Weapon
   - Enemy
+  - Item
+  - Potion
+  - Coin
+  - Portion
   layers:
   - Default
   - TransparentFX

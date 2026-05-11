@@ -13,11 +13,16 @@ public class PlayerController : MonoBehaviour
     public int currentHP;
     private int damage;
     private bool statusWindowFrag = false;
+    private int coin = 0;
+    private int potion = 0;
     [SerializeField] EnemyStatusSO EnemyStatusSO;
 
     [SerializeField] PlayerStatusSO playerStatusSO;
     [SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI potionText;
     [SerializeField] GameObject statusWindow;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -122,6 +127,25 @@ public class PlayerController : MonoBehaviour
                currentHP = currentHP - damage;
             }
         }
-        
+
+        if (col.gameObject.tag == "Item")
+        {
+            Destroy(col.gameObject);
+            switch (col.gameObject.GetComponent<ItemManager>().itemNo)
+            {
+                case 0:
+                    coin++;
+                    coinText.GetComponent<TextMeshProUGUI>().text = coin.ToString();
+                    break;
+                case 1:
+                    potion++;
+                    potionText.GetComponent<TextMeshProUGUI>().text = potion.ToString();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
+
+
