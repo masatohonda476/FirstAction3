@@ -23,7 +23,6 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentHP);
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget <= chaseDistance)
         {

@@ -135,10 +135,12 @@ public class PlayerController : MonoBehaviour
             {
                 case 0:
                     coin++;
+                    Debug.Log("コインを(" + coin + ")入手");
                     coinText.GetComponent<TextMeshProUGUI>().text = coin.ToString();
                     break;
                 case 1:
                     potion++;
+                    Debug.Log("ポーションを(" + potion + ")入手");
                     potionText.GetComponent<TextMeshProUGUI>().text = potion.ToString();
                     break;
                 default:
