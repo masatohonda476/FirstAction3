@@ -3479,8 +3479,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HP:100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 84b390a91e82545c28af3a0e090b6870, type: 2}
+  m_sharedMaterial: {fileID: 997282177905601903, guid: 84b390a91e82545c28af3a0e090b6870, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4683,9 +4683,8 @@ MonoBehaviour:
   EnemyStatusSO: {fileID: 11400000, guid: 70feebffd5d6b404a858a6d692723d3b, type: 2}
   playerStatusSO: {fileID: 11400000, guid: b52edc6d46ab14a909409fb94ae7cc1b, type: 2}
   hpText: {fileID: 740520584}
-  coinText: {fileID: 1751646988}
-  potionText: {fileID: 604470777}
   statusWindow: {fileID: 1555069130}
+  itemBoxManager: {fileID: 1377480367}
 --- !u!4 &1198313954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8855052669661678444, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
@@ -5340,6 +5339,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2186217001014013416, guid: 915ac35a5aca31d4c9575633be0f6b82, type: 3}
   m_PrefabInstance: {fileID: 1350264727}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1377480366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377480368}
+  - component: {fileID: 1377480367}
+  m_Layer: 0
+  m_Name: ItemBoxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1377480367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377480366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a6d1c2df3fb4423af8f6dd69ea36f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemBoxManager
+  itemsSO: {fileID: 11400000, guid: 9246e816fbc4347baa4ec03a83d8df47, type: 2}
+  coinText: {fileID: 1751646988}
+  potionText: {fileID: 604470777}
+  getItem: 0
+--- !u!4 &1377480368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377480366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.65864, y: 4.79874, z: 34.347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382723082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7584,3 +7631,4 @@ SceneRoots:
   - {fileID: 733675003}
   - {fileID: 1447235393}
   - {fileID: 526902460}
+  - {fileID: 1377480368}

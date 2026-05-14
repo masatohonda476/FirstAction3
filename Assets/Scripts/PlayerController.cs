@@ -13,15 +13,16 @@ public class PlayerController : MonoBehaviour
     public int currentHP;
     private int damage;
     private bool statusWindowFrag = false;
-    private int coin = 0;
-    private int potion = 0;
+    //private int coin = 0;
+    //private int potion = 0;
     [SerializeField] EnemyStatusSO EnemyStatusSO;
 
     [SerializeField] PlayerStatusSO playerStatusSO;
     [SerializeField] TextMeshProUGUI hpText;
-    [SerializeField] TextMeshProUGUI coinText;
-    [SerializeField] TextMeshProUGUI potionText;
+    // [SerializeField] TextMeshProUGUI coinText;
+    // [SerializeField] TextMeshProUGUI potionText;
     [SerializeField] GameObject statusWindow;
+    [SerializeField] ItemBoxManager itemBoxManager;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -68,12 +69,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //ステータス画面
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift)) //Shiftキー
         {
             switch (statusWindowFrag)
             {
                 case false:
                     GameObject.Find("StatusWindowManager").GetComponent<StatusWindowManager>().StatusOpen();
+                    itemBoxManager.GetComponent<ItemBoxManager>().ItemOpen();
                     statusWindow.SetActive(true);
                     Time.timeScale = 0;
                     statusWindowFrag = true;
@@ -131,21 +133,23 @@ public class PlayerController : MonoBehaviour
         if (col.gameObject.tag == "Item")
         {
             Destroy(col.gameObject);
-            switch (col.gameObject.GetComponent<ItemManager>().itemNo)
-            {
-                case 0:
-                    coin++;
-                    Debug.Log("コインを(" + coin + ")入手");
-                    coinText.GetComponent<TextMeshProUGUI>().text = coin.ToString();
-                    break;
-                case 1:
-                    potion++;
-                    Debug.Log("ポーションを(" + potion + ")入手");
-                    potionText.GetComponent<TextMeshProUGUI>().text = potion.ToString();
-                    break;
-                default:
-                    break;
-            }
+            itemBoxManager.GetComponent<ItemBoxManager>().getItem = col.gameObject.GetComponent<ItemManager>().itemNo; //獲得アイテムの番号をItemBoxManagerのgetItemに代入
+            itemBoxManager.GetComponent<ItemBoxManager>().ItemGet();　//獲得アイテムの数を+1する関数を呼び出す
+        //     switch (col.gameObject.GetComponent<ItemManager>().itemNo)
+        //     {
+        //         case 0:
+        //             coin++;
+        //             Debug.Log("コインを(" + coin + ")入手");
+        //             coinText.GetComponent<TextMeshProUGUI>().text = coin.ToString();
+        //             break;
+        //         case 1:
+        //             potion++;
+        //             Debug.Log("ポーションを(" + potion + ")入手");
+        //             potionText.GetComponent<TextMeshProUGUI>().text = potion.ToString();
+        //             break;
+        //         default:
+        //             break;
+        //     }
         }
     }
 }
