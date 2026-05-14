@@ -6525,7 +6525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30A2\u30A4\u30C6\u30E0"
+  m_text: No Item
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84b390a91e82545c28af3a0e090b6870, type: 2}
   m_sharedMaterial: {fileID: 997282177905601903, guid: 84b390a91e82545c28af3a0e090b6870, type: 2}
@@ -6621,7 +6621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 97, y: 48}
+  m_AnchoredPosition: {x: 97, y: 39}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1751646986
