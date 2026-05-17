@@ -11,8 +11,12 @@ public class EventSO : ScriptableObject
         [SerializeField] string personName;
         [TextArea]
         [SerializeField] string words;
+        [SerializeField] int yes;
+        [SerializeField] int no;
 
         public string Words { get => words; }
+        public int Yes { get => yes; }
+        public int No { get => no; }
     }
     
 }

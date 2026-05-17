@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class NPCManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI talkText;
     [SerializeField] EventSO eventSO;
     private bool talkWIndowFrag = false;
+    private int progressFlag = 0;
+    private string currentText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,17 +34,57 @@ public class NPCManager : MonoBehaviour
             {
                 case false:
                     talkWindow.SetActive(true);
-                    talkText.text = eventSO.eventList[0].Words;
+                    EventProgress();
+                    talkText.text = currentText;
                     talkWIndowFrag = true;
                     break;
                 case true:
-                    talkWindow.SetActive(false);
-                    talkText.text = "";
+                    // talkWindow.SetActive(false);
+                    // talkText.text = "";
                     talkWIndowFrag = false;
-                    break;
-                default:
                     break;
             }
         }
+    }
+
+    void EventProgress()
+    {
+        currentText = eventSO.eventList[progressFlag].Words;
+        //progressFlag++;
+    }
+
+    public void ClickEventButton(bool yesno)
+    {
+        if (progressFlag < 0 || progressFlag >= eventSO.eventList.Count)
+        {
+            EndTalk();
+            return;
+        }
+
+        switch (yesno)
+        {
+            case true:
+                progressFlag = eventSO.eventList[progressFlag].Yes;
+                break;
+            case false:
+                progressFlag = eventSO.eventList[progressFlag].No;
+                break; 
+        }
+
+        if (progressFlag < 0 || progressFlag >= eventSO.eventList.Count)
+        {
+            EndTalk();
+            return;
+        }
+
+        EventProgress();
+    }
+
+    void EndTalk()
+    {
+        talkWindow.SetActive(false);
+        talkText.text = "";
+        talkWIndowFrag = false;
+        progressFlag = 0;
     }
 }

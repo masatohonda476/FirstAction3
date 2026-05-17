@@ -14,4 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EventSO
   eventList:
   - personName: "\u5973\u30CF\u30F3\u30BF\u30FC"
-    words: "\u3053\u3093\u306B\u3061\u306F!!!!!!"
+    words: "\u30B9\u30E9\u30A4\u30E0\u306E\u5012\u3057\u65B9\u3092\u6559\u3048\u307E\u3057\u3087\u3046\u304B?"
+    yes: 2
+    no: 1
+  - personName: "\u5973\u30CF\u30F3\u30BF\u30FC"
+    words: "\u672C\u5F53\u306B\u805E\u304B\u306A\u304F\u3066\u3044\u3044\u3067\u3059\u304B?"
+    yes: 3
+    no: 2
+  - personName: "\u5973\u30CF\u30F3\u30BF\u30FC"
+    words: "\u5263\u3067\u65AC\u308B\u3068\u5012\u305B\u307E\u3059!!!"
+    yes: 4
+    no: 4
+  - personName: "\u5973\u30CF\u30F3\u30BF\u30FC"
+    words: "\u3055\u3088\u3046\u306A\u3089!"
+    yes: 4
+    no: 4
