@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (col.gameObject.tag == "Weapon")
         {
-            Debug.Log("当たった");
+            Debug.Log("武器が当たった");
             damage = (int)(PlayerStatusSO.ATTACK / 2 - enemyStatusSO.enemyStatusList[0].DEFENSE / 4);
             if (damage > 0)
             {
